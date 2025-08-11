@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Today's Pictures</title>
+    <style>
+        body {
+            background-color: #111827;
+            color: white;
+            font-family: Helvetica, Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+        }
+        h1 {
+            text-align: center;
+            color: #EB2952;
+        }
+        .gallery {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            max-width: 1200px;
+            margin: 20px auto;
+        }
+        .category {
+            border: 1px solid #EB2952;
+            border-radius: 10px;
+            padding: 15px;
+        }
+        .category h2 {
+            text-align: center;
+            margin-top: 0;
+        }
+        .image-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+        }
+        .image-grid a {
+            display: block;
+            text-decoration: none;
+        }
+        .image-grid img {
+            width: 100%;
+            height: auto;
+            border-radius: 5px;
+            transition: transform 0.3s ease;
+        }
+        .image-grid img:hover {
+            transform: scale(1.05);
+        }
+        .no-images {
+            text-align: center;
+            font-size: 1.5em;
+            margin-top: 50px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Today's Pictures</h1>
+    {% if images %}
+    <div class="gallery">
+        <div class="category">
+            <h2>Category 1</h2>
+            <div class="image-grid">
+                {% if images.cat1_pic1 %}
+                <a href="{{ images.cat1_pic1.url }}"><img src="{{ images.cat1_pic1.src }}" alt="Category 1, Pic 1"></a>
+                {% endif %}
+                {% if images.cat1_pic2 %}
+                <a href="{{ images.cat1_pic2.url }}"><img src="{{ images.cat1_pic2.src }}" alt="Category 1, Pic 2"></a>
+                {% endif %}
+            </div>
+        </div>
+        <div class="category">
+            <h2>Category 2</h2>
+            <div class="image-grid">
+                {% if images.cat2_pic1 %}
+                <a href="{{ images.cat2_pic1.url }}"><img src="{{ images.cat2_pic1.src }}" alt="Category 2, Pic 1"></a>
+                {% endif %}
+                {% if images.cat2_pic2 %}
+                <a href="{{ images.cat2_pic2.url }}"><img src="{{ images.cat2_pic2.src }}" alt="Category 2, Pic 2"></a>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+    {% else %}
+    <p class="no-images">No images available for today. Please check back tomorrow.</p>
+    {% endif %}
+</body>
+</html>

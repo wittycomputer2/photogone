@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Age Verification</title>
+    <style>
+        body {
+            background-color: #000;
+            color: #fff;
+            font-family: Helvetica, Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            text-align: center;
+        }
+        .verification-container {
+            max-width: 400px;
+        }
+        h1 {
+            font-size: 2em;
+            margin-bottom: 2em;
+        }
+        .buttons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+        .btn {
+            padding: 15px 30px;
+            border: none;
+            cursor: pointer;
+            font-size: 1.2em;
+            font-weight: bold;
+            text-decoration: none;
+            color: white;
+            text-align: center;
+            border-radius: 5px;
+        }
+        .btn-yes {
+            background-color: #EB2952;
+            color: white;
+        }
+        .btn-no {
+            background-color: white;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div class="verification-container">
+        <h1>Are you over 18?</h1>
+        <div class="buttons">
+            <a href="/main" class="btn btn-yes">Yes</a>
+            <a href="about:blank" class="btn btn-no">No</a>
+        </div>
+    </div>
+</body>
+</html>
