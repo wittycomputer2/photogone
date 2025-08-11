@@ -215,6 +215,45 @@
         height: 200px;
       }
     }
+
+    /* Modal styles */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 101;
+      padding-top: 50px;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      overflow: auto;
+      background-color: rgba(0,0,0,0.9);
+    }
+    .modal-content {
+      margin: auto;
+      display: block;
+      width: 80%;
+      max-width: 1200px;
+    }
+    .close {
+      position: absolute;
+      top: 15px;
+      right: 35px;
+      color: #f1f1f1;
+      font-size: 40px;
+      font-weight: bold;
+      transition: 0.3s;
+    }
+    .close:hover,
+    .close:focus {
+      color: #bbb;
+      text-decoration: none;
+      cursor: pointer;
+    }
+    /* Add cursor pointer to main image */
+    #content-image {
+        cursor: pointer;
+    }
   </style>
 </head>
 <body>
@@ -237,8 +276,8 @@
   <!-- Main content -->
   <main class="main-content">
     <div class="image-container">
-      <!-- Image placeholder - replace with your actual image -->
-      <img src="" alt="Content image" id="content-image">
+      <!-- Image will be loaded here dynamically -->
+      <img src="{{ image_src }}" alt="Content image" id="content-image">
     </div>
   </main>
 
@@ -246,6 +285,12 @@
   <footer>
     <img src="logo.png" alt="Lovely Violet" class="logo">
   </footer>
+
+  <!-- Modal for image enlargement -->
+  <div id="imageModal" class="modal">
+    <span class="close">&times;</span>
+    <img class="modal-content" id="modalImage">
+  </div>
 
   <script>
     // Enhanced blob animation
@@ -263,8 +308,41 @@
     animateBlobs();
     setInterval(animateBlobs, 3000);
 
-    // You can add your image loading logic here
-    // document.getElementById('content-image').src = 'your-image.jpg';
+    // --- Enhancements ---
+
+    // 1. Disable Right-Click
+    document.addEventListener('contextmenu', event => event.preventDefault());
+
+    // 2. Image Modal Logic
+    const modal = document.getElementById('imageModal');
+    const img = document.getElementById('content-image');
+    const modalImg = document.getElementById("modalImage");
+
+    if (img) {
+      img.onclick = function(){
+        if (modal && modalImg) {
+          modal.style.display = "block";
+          modalImg.src = this.src;
+        }
+      }
+    }
+
+    const closeBtn = document.getElementsByClassName("close")[0];
+    if (closeBtn) {
+      closeBtn.onclick = function() {
+        if (modal) {
+          modal.style.display = "none";
+        }
+      }
+    }
+
+    if (modal) {
+      modal.onclick = function(event) {
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
+      }
+    }
   </script>
 </body>
 </html>
