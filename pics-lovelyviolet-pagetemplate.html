@@ -1,0 +1,270 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Lovely Violet</title>
+  <style>
+    :root{
+      --duration: 600ms;
+      --glass: rgba(255,255,255,0.08);
+      --card-radius: 18px;
+      --max-width: 1200px;
+      --accent: rgba(255,255,255,0.12);
+      --primary-color: #EB2952;
+      --secondary-color: #E495DA;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family: Helvetica, Arial, sans-serif;
+      display:grid;
+      place-items:center;
+      padding:0;
+      transition:background var(--duration) ease-in-out;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      background: #111827;
+      color: white;
+      overflow:hidden;
+    }
+
+    /* Header styles */
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      padding: 20px 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      z-index: 100;
+    }
+
+    .logo {
+      height: 50px; /* Adjust based on your logo.png dimensions */
+      width: auto;
+    }
+
+    .menu {
+      display: flex;
+      gap: 30px;
+      align-items: center;
+    }
+
+    .menu a {
+      color: white;
+      text-decoration: none;
+      text-transform: uppercase;
+      font-weight: bold;
+      letter-spacing: 1px; /* Adjust kerning here */
+      transition: color 0.3s ease;
+      font-size: 14px;
+    }
+
+    .menu a:hover {
+      color: var(--primary-color);
+    }
+
+    .telegram-link {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .telegram-icon {
+      width: 24px;
+      height: 24px;
+      object-fit: contain;
+    }
+
+    /* Main content */
+    .main-content {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+      height: 100vh;
+      padding: 80px 40px;
+      box-sizing: border-box;
+    }
+
+    .image-container {
+      max-width: 90%;
+      max-height: 80vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .image-container img {
+      max-width: 100%;
+      max-height: 100%;
+      object-fit: contain;
+      border-radius: 8px;
+    }
+
+    /* Footer */
+    footer {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      padding: 20px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 100;
+    }
+
+    /* Background blobs - improved to match original beauty */
+    .blob{
+      position:absolute;
+      filter: blur(60px);
+      opacity: 0.3;
+      transform: translate3d(0,0,0);
+      border-radius: 50%;
+      z-index: -1;
+      animation: float 15s infinite ease-in-out;
+    }
+    .blob.one{
+      width: 400px;
+      height: 400px;
+      right: 20%;
+      top: 20%;
+      background: linear-gradient(135deg, var(--primary-color) 0%, rgba(235,41,82,0.2) 100%);
+      animation-delay: 0s;
+    }
+    .blob.two{
+      width: 500px;
+      height: 500px;
+      left: 20%;
+      bottom: 20%;
+      background: linear-gradient(135deg, var(--secondary-color) 0%, rgba(228,149,218,0.2) 100%);
+      animation-delay: 2.5s;
+    }
+
+    @keyframes float {
+      0%, 100% {
+        transform: translate(0, 0) scale(1);
+      }
+      25% {
+        transform: translate(20px, 20px) scale(1.05);
+      }
+      50% {
+        transform: translate(0, 40px) scale(1);
+      }
+      75% {
+        transform: translate(-20px, 20px) scale(0.95);
+      }
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 768px) {
+      header {
+        padding: 15px 20px;
+      }
+      .menu {
+        gap: 15px;
+      }
+      .logo {
+        height: 40px;
+      }
+      .menu a {
+        font-size: 12px;
+      }
+      .telegram-icon {
+        width: 20px;
+        height: 20px;
+      }
+      .blob.one, .blob.two {
+        width: 300px;
+        height: 300px;
+      }
+      .blob.one {
+        right: 10%;
+        top: 10%;
+      }
+      .blob.two {
+        left: 10%;
+        bottom: 10%;
+      }
+    }
+
+    @media (max-width: 480px) {
+      header {
+        flex-direction: column;
+        padding: 10px;
+      }
+      .logo {
+        margin-bottom: 10px;
+      }
+      .menu {
+        gap: 10px;
+      }
+      .menu a {
+        font-size: 11px;
+      }
+      .main-content {
+        padding: 100px 20px 60px;
+      }
+      .blob.one, .blob.two {
+        width: 200px;
+        height: 200px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Beautiful blurred background blobs -->
+  <div class="blob one" aria-hidden="true"></div>
+  <div class="blob two" aria-hidden="true"></div>
+
+  <!-- Header -->
+  <header>
+    <img src="logo.png" alt="Lovely Violet" class="logo">
+    <nav class="menu">
+      <a href="https://lovelyviolet.com">Go to site</a>
+      <a href="https://t.me/violethotbot" class="telegram-link">
+        <img src="telegram.png" alt="Telegram" class="telegram-icon">
+        <span>Telegram Chat</span>
+      </a>
+    </nav>
+  </header>
+
+  <!-- Main content -->
+  <main class="main-content">
+    <div class="image-container">
+      <!-- Image placeholder - replace with your actual image -->
+      <img src="" alt="Content image" id="content-image">
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <img src="logo.png" alt="Lovely Violet" class="logo">
+  </footer>
+
+  <script>
+    // Enhanced blob animation
+    function animateBlobs(){
+      const blobs = document.querySelectorAll('.blob');
+      blobs.forEach(blob => {
+        const mx = (Math.random()*40)-20;
+        const my = (Math.random()*40)-20;
+        const scale = 1 + Math.random()*0.1;
+        blob.style.transform = `translate3d(${mx}px, ${my}px, 0) scale(${scale})`;
+      });
+    }
+
+    // Initial animation and periodic updates
+    animateBlobs();
+    setInterval(animateBlobs, 3000);
+
+    // You can add your image loading logic here
+    // document.getElementById('content-image').src = 'your-image.jpg';
+  </script>
+</body>
+</html>
